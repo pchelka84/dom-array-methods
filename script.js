@@ -24,5 +24,25 @@ async function getRandomUser()  {
     name: `${user.name.first} ${user.name.last}`,
     money: Math.floor(Math.random()*1000000)
   }
-  console.log(newUser)
+  addData(newUser);
+}
+
+// Add new object to data arr
+function addData(obj) {
+  data.push(obj);
+
+  updateDOM();
+}
+
+// Update DOM
+function updateDOM(providedData = data) {
+  // Clear main div
+  main.innerHTML = '<h2><strong>Person</strong> Wealth</h2>';
+
+  providedData.forEach(person => {
+   const element = document.createElement('div');
+   element.classList.add('person');
+   element.innerHTML=`<strong>${person.name}</strong> ${person.money}`;
+   main.appendChild(element); 
+  });
 }

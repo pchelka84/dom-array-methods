@@ -42,7 +42,13 @@ function updateDOM(providedData = data) {
   providedData.forEach(person => {
    const element = document.createElement('div');
    element.classList.add('person');
-   element.innerHTML=`<strong>${person.name}</strong> ${person.money}`;
+   element.innerHTML=`<strong>${person.name}</strong> ${formatMoney(person.money)}`;
    main.appendChild(element); 
   });
+}
+
+// Format number as money
+//https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string 
+function formatMoney(number) {
+  return '$' + number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 }

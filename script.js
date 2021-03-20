@@ -50,11 +50,13 @@ function showMillionairs() {
   updateDOM();
 }
 
-function calculateWealth() {
+// Calculate wealth
+function calculateWealth() {  
   const total = data.reduce((acc, person) => (acc += person.money), 0);
   const totalWealthEl = document.createElement('div');
   totalWealthEl.innerHTML = `<h3>Total wealth: <strong>${formatMoney(total)}</strong></h3>`;
   main.appendChild(totalWealthEl); 
+  calculateWealthBtn.disabled = true;
 }
 
 // Add new object to data arr
